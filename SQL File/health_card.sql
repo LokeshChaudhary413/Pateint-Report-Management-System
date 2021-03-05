@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2020 at 03:39 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Generation Time: Mar 05, 2021 at 12:07 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `loginsystem`
+-- Database: `health_card`
 --
 
 -- --------------------------------------------------------
@@ -62,8 +61,29 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `contactno`, `posting_date`) VALUES
-(9, 'Anuj', 'Kumar', 'demouser@gmail.com', 'Test@123', '21222222', '2020-04-15 18:30:00'),
+(9, 'Anuj', 'Kumar', 'admin@admin.com', 'Test@123', '21222222', '2020-04-15 18:30:00'),
 (11, 'Anuj', 'Kumar', 'chaudharylokesh413@gmail.com', 'Test@123', '1234567890', '2020-04-15 18:30:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_data`
+--
+
+CREATE TABLE `user_data` (
+  `u_id` int(11) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `remark` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_data`
+--
+
+INSERT INTO `user_data` (`u_id`, `image`, `remark`, `created_at`) VALUES
+(1, 'upload-images/beautiful-seascape-36JFBXG.jpg', 'Hi, This is a test report.', '2021-03-05 06:50:35'),
+(2, 'upload-images/_t20_Bl0xZP.jpg', 'Hi, This is a test report 2.', '2021-03-05 06:54:35');
 
 --
 -- Indexes for dumped tables
@@ -82,6 +102,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_data`
+--
+ALTER TABLE `user_data`
+  ADD PRIMARY KEY (`u_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -96,6 +122,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `user_data`
+--
+ALTER TABLE `user_data`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
